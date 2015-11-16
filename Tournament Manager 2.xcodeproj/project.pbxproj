@@ -33,6 +33,7 @@
 		2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */; };
 		2963CC1B1BEFB0F20084AF47 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC1A1BEFB0F20084AF47 /* Participant.swift */; };
 		FA1789881BF94EDA0047901B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789871BF94EDA0047901B /* Match.swift */; settings = {ASSET_TAGS = (); }; };
+		FA17898A1BF968DB0047901B /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789891BF968DB0047901B /* Stations.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2963CC1A1BEFB0F20084AF47 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		FA1789871BF94EDA0047901B /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		FA1789891BF968DB0047901B /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				2963CBEE1BEF940A0084AF47 /* Info.plist */,
 				2963CBE61BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld */,
 				FA1789871BF94EDA0047901B /* Match.swift */,
+				FA1789891BF968DB0047901B /* Stations.swift */,
 			);
 			path = "Tournament Manager 2";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				2963CBE01BEF94090084AF47 /* AppDelegate.swift in Sources */,
 				2963CC1B1BEFB0F20084AF47 /* Participant.swift in Sources */,
 				2963CC0C1BEF9C410084AF47 /* LeftViewController.swift in Sources */,
+				FA17898A1BF968DB0047901B /* Stations.swift in Sources */,
 				2963CC171BEF9C4C0084AF47 /* StringExtension.swift in Sources */,
 				2963CC071BEF9C380084AF47 /* BracketViewController.swift in Sources */,
 				2963CC181BEF9C4C0084AF47 /* UITableViewExtension.swift in Sources */,
