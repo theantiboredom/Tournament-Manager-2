@@ -32,8 +32,9 @@
 		2963CC181BEF9C4C0084AF47 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC131BEF9C4C0084AF47 /* UITableViewExtension.swift */; };
 		2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */; };
 		2963CC1B1BEFB0F20084AF47 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC1A1BEFB0F20084AF47 /* Participant.swift */; };
-		FA1789881BF94EDA0047901B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789871BF94EDA0047901B /* Match.swift */; settings = {ASSET_TAGS = (); }; };
-		FA17898A1BF968DB0047901B /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789891BF968DB0047901B /* Stations.swift */; settings = {ASSET_TAGS = (); }; };
+		298D2FBC1BF96C84003DBE63 /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D2FBB1BF96C84003DBE63 /* Bracket.swift */; };
+		FA1789881BF94EDA0047901B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789871BF94EDA0047901B /* Match.swift */; };
+		FA17898A1BF968DB0047901B /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789891BF968DB0047901B /* Stations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		2963CC131BEF9C4C0084AF47 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2963CC1A1BEFB0F20084AF47 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
+		298D2FBB1BF96C84003DBE63 /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
 		FA1789871BF94EDA0047901B /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		FA1789891BF968DB0047901B /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 				2963CC001BEF9B9A0084AF47 /* ViewController.swift */,
 				2963CC021BEF9C2E0084AF47 /* AddViewController.swift */,
 				2963CC1A1BEFB0F20084AF47 /* Participant.swift */,
+				298D2FBB1BF96C84003DBE63 /* Bracket.swift */,
 				2963CC041BEF9C380084AF47 /* BaseTableViewCell.swift */,
 				2963CC051BEF9C380084AF47 /* BracketViewController.swift */,
 				2963CC081BEF9C410084AF47 /* LeftViewController.swift */,
@@ -213,6 +216,7 @@
 				2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */,
 				2963CBE81BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld in Sources */,
 				2963CC0F1BEF9C410084AF47 /* SettingsViewController.swift in Sources */,
+				298D2FBC1BF96C84003DBE63 /* Bracket.swift in Sources */,
 				2963CC031BEF9C2E0084AF47 /* AddViewController.swift in Sources */,
 				2963CC061BEF9C380084AF47 /* BaseTableViewCell.swift in Sources */,
 				2963CC151BEF9C4C0084AF47 /* SlideMenuController.swift in Sources */,
