@@ -60,9 +60,6 @@ class Participant {
             _cBrackets = cBrackets
         }
     }
-    //Using UnsafePointer as a place holder since I don't have the matches pointer yet
-    var matches: UnsafePointer<String>
-    var cMatch: UnsafePointer<String>
     //setting all the values to default 0/nil/etc for init
     init(){
         _name = ""
@@ -70,8 +67,6 @@ class Participant {
         _losses = 0
         _seed = 0
         _cBrackets = 0
-        matches = nil
-        cMatch = nil
     }
     //I made explicit get/set methods as well for more flexability
     func getName(participant: Participant) -> String {
