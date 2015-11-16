@@ -78,18 +78,22 @@ class Match {
         }
     }
     
+    //these are used to point towards what match the winner and loser will advance to (loser only if double elim)
+    var WinnersMatch: Match?
+    var LosersMatch: Match?
+    
+    //these are the two matches that winners are pulled from in a binary tournament tree
+    var LeftMatch: Match?
+    var RightMatch: Match?
+    
+    
     //initialization of a Match object
     init(PlayerO: Participant, PlayerT: Participant){
         _PlayerOne = PlayerO
         _PlayerTwo = PlayerT
         _POScore = 0
         _PTScore = 0
-        
-        
     }
-    
-    
-    
     
     
 }
