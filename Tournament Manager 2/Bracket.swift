@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import CoreData
 
 class Bracket{
     var name: String?
-    var doubleElimination: Bool?
+    var singleElim: Bool?
     var numParticipants: Int? //number of participants 
     var bracketType: Int? //Bracket type. 0 = 4 person bracket. 1 = 8 person. 2 = 16 person. 3 = 32 person. 4 = 64 person.
+    var active: Bool? //active tournament? True = active
+    var creationDate: String?
     
     var competitors = [Participant]()
     
@@ -20,8 +23,12 @@ class Bracket{
     //to be uncommented once we have Matches class 
     
     init(bracketName: String, elim: Bool, numPart: Int){
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        creationDate = formatter.stringFromDate(date)
         name = bracketName
-        doubleElimination = elim
+        singleElim = elim
         numParticipants = numPart
         if(numPart < 5){
             bracketType = 0
@@ -38,6 +45,7 @@ class Bracket{
         else{
             bracketType = 4
         }
+        active = true
         
     }
     

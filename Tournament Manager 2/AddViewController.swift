@@ -7,10 +7,31 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController {
+    
+    //elimination type boolean 
+    var singleElim = false
+    
     var mainViewController: UIViewController!
 
+    @IBOutlet weak var bracketName: UITextField!
+    @IBOutlet weak var numParticipants: UITextField!
+    
+    @IBOutlet weak var elimType: UISegmentedControl!
+    
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch elimType.selectedSegmentIndex {
+        case 0:
+            singleElim = true
+        case 1:
+            singleElim = false
+        default:
+            break
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +55,34 @@ class AddViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func createButton(sender: AnyObject) {
+        let name = bracketName.text
+        let numParts = Int(numParticipants.text!)
+        
+        let createdBracket = Bracket(bracketName: name!, elim: singleElim, numPart: numParts!)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let entity = NSEntityDescription.entityForName("Bracket", inManagedObjectContext: managedContext)
+        let savedBracket = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        
+        savedBracket.setValue(createdBracket.name, forKey: "name")
+        savedBracket.setValue(createdBracket.active, forKey: "active")
+        savedBracket.setValue(createdBracket.bracketType, forKey: "bracketType")
+        savedBracket.setValue(createdBracket.creationDate, forKey: "creationDate")
+        savedBracket.setValue(createdBracket.numParticipants, forKey: "numParts")
+        savedBracket.setValue(createdBracket.singleElim, forKey: "singleElim")
+        
+        do {
+            try managedContext.save()
+            brackets.append(savedBracket)
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
 

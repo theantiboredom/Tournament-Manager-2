@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pux-Iu-tfy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pux-Iu-tfy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -39,6 +40,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="601" id="WJL-Ae-VaF"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pux-Iu-tfy" id="CTu-uH-ihm"/>
+                                    <outlet property="delegate" destination="Pux-Iu-tfy" id="7eu-Qf-hbe"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -60,6 +65,9 @@
                         </connections>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="VFq-gc-DnX" id="e6O-5a-cgF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0n-FY-x0P" sceneMemberID="firstResponder"/>
                 <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="cs0-Wu-ofc">
@@ -81,57 +89,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFb-Fe-Mkt">
-                                <rect key="frame" x="16" y="20" width="54" height="21"/>
+                                <rect key="frame" x="16" y="37" width="54" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Timer Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ii-GL-RNk">
-                                <rect key="frame" x="16" y="102" width="161" height="21"/>
+                                <rect key="frame" x="16" y="119" width="161" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bracket Sorting By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9L1-jL-uOY">
-                                <rect key="frame" x="16" y="201" width="148" height="21"/>
+                                <rect key="frame" x="16" y="218" width="148" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xj-Qj-W02">
-                                <rect key="frame" x="16" y="319" width="32" height="30"/>
+                                <rect key="frame" x="16" y="336" width="32" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Help"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUY-9q-b8z">
-                                <rect key="frame" x="229" y="319" width="130" height="30"/>
+                                <rect key="frame" x="229" y="339" width="130" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Delete All Brackets"/>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-qW-sYa">
-                                <rect key="frame" x="200" y="17" width="149" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="White"/>
-                                    <segment title="Black"/>
-                                </segments>
-                            </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hnx-lp-TDS">
-                                <rect key="frame" x="200" y="98" width="159" height="30"/>
+                                <rect key="frame" x="200" y="118" width="159" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="k9Q-fo-FY8">
-                                <rect key="frame" x="198" y="198" width="161" height="29"/>
+                                <rect key="frame" x="198" y="218" width="161" height="29"/>
                                 <animations/>
                                 <segments>
                                     <segment title="Name"/>
                                     <segment title="Date"/>
                                     <segment title="Status"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mMO-qW-sYa">
+                                <rect key="frame" x="200" y="37" width="149" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="White"/>
+                                    <segment title="Black"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -141,7 +149,6 @@
                         <constraints>
                             <constraint firstItem="3ii-GL-RNk" firstAttribute="top" secondItem="gFb-Fe-Mkt" secondAttribute="bottom" constant="61" id="24Y-WM-PMc"/>
                             <constraint firstItem="NUY-9q-b8z" firstAttribute="top" secondItem="k9Q-fo-FY8" secondAttribute="bottom" constant="93" id="57X-sX-0oE"/>
-                            <constraint firstItem="gFb-Fe-Mkt" firstAttribute="top" secondItem="ZK7-cf-Wdg" secondAttribute="bottom" id="5VN-Vd-LhW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mMO-qW-sYa" secondAttribute="trailing" constant="10" id="BjM-JN-05A"/>
                             <constraint firstItem="hnx-lp-TDS" firstAttribute="top" secondItem="mMO-qW-sYa" secondAttribute="bottom" constant="53" id="GNK-kD-7Jg"/>
                             <constraint firstItem="9L1-jL-uOY" firstAttribute="top" secondItem="3ii-GL-RNk" secondAttribute="bottom" constant="78" id="L6T-BY-Aj3"/>
@@ -151,8 +158,9 @@
                             <constraint firstItem="k9Q-fo-FY8" firstAttribute="top" secondItem="hnx-lp-TDS" secondAttribute="bottom" constant="70" id="Ybt-zd-f4S"/>
                             <constraint firstItem="mMO-qW-sYa" firstAttribute="leading" secondItem="gFb-Fe-Mkt" secondAttribute="trailing" constant="130" id="ew6-Ro-TFA"/>
                             <constraint firstItem="gFb-Fe-Mkt" firstAttribute="leading" secondItem="Wl1-uy-ILc" secondAttribute="leadingMargin" id="fGZ-hD-dCO"/>
+                            <constraint firstItem="gFb-Fe-Mkt" firstAttribute="top" secondItem="ZK7-cf-Wdg" secondAttribute="bottom" constant="17" id="ij7-U9-GMB"/>
                             <constraint firstItem="5xj-Qj-W02" firstAttribute="leading" secondItem="Wl1-uy-ILc" secondAttribute="leadingMargin" id="jne-R4-Uei"/>
-                            <constraint firstItem="mMO-qW-sYa" firstAttribute="top" secondItem="Wl1-uy-ILc" secondAttribute="topMargin" constant="17" id="ruZ-JV-AFk"/>
+                            <constraint firstItem="mMO-qW-sYa" firstAttribute="top" secondItem="ZK7-cf-Wdg" secondAttribute="bottom" constant="17" id="m3N-OO-yDL"/>
                             <constraint firstItem="3ii-GL-RNk" firstAttribute="leading" secondItem="Wl1-uy-ILc" secondAttribute="leadingMargin" id="sfV-LW-NJb"/>
                             <constraint firstItem="k9Q-fo-FY8" firstAttribute="trailing" secondItem="Wl1-uy-ILc" secondAttribute="trailingMargin" id="w32-LN-g78"/>
                             <constraint firstItem="hnx-lp-TDS" firstAttribute="trailing" secondItem="Wl1-uy-ILc" secondAttribute="trailingMargin" id="yjO-YG-6c5"/>
@@ -234,7 +242,7 @@
                                 <rect key="frame" x="235" y="115" width="124" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vYg-OF-Gsb">
                                 <rect key="frame" x="188" y="196" width="171" height="29"/>
@@ -243,11 +251,17 @@
                                     <segment title="Single"/>
                                     <segment title="Double"/>
                                 </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="I94-F6-oZ2" eventType="valueChanged" id="WHc-mI-KPn"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70M-DE-20V">
                                 <rect key="frame" x="164" y="276" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createButton:" destination="I94-F6-oZ2" eventType="touchUpInside" id="XjE-Ga-CDG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -275,6 +289,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bracketName" destination="ovU-BZ-gdB" id="L8R-uD-RJI"/>
+                        <outlet property="elimType" destination="vYg-OF-Gsb" id="bVL-BG-8Mb"/>
+                        <outlet property="numParticipants" destination="SSk-He-T8J" id="uId-Vx-w0b"/>
                         <segue destination="Pux-Iu-tfy" kind="show" identifier="backToHome" id="Lxt-4i-yP9"/>
                     </connections>
                 </viewController>
