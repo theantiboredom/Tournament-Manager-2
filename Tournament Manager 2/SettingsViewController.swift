@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class SettingsViewController: UIViewController {
 
@@ -27,6 +29,19 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func deleteAllBrackets(sender: AnyObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchrequest = NSFetchRequest(entityName: "Bracket")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchrequest)
+        
+        do {
+            try managedContext.executeRequest(deleteRequest)
+        } catch let error as NSError {
+            print ("Error: \(error)")
+        }
+    }
 
     /*
     // MARK: - Navigation

@@ -43,6 +43,8 @@ class AddViewController: UIViewController {
         navigationItem.title = "Add Bracket"
         let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancelButton")
         navigationItem.leftBarButtonItem = cancelButton
+        bracketName.text = ""
+        numParticipants.text = ""
     }
     
     
@@ -83,6 +85,14 @@ class AddViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save \(error), \(error.userInfo)")
         }
+        
+        currentBracket = createdBracket
+        
+        var bracketViewController: UIViewController!
+
+        bracketViewController = storyboard!.instantiateViewControllerWithIdentifier("BracketViewController") as! BracketViewController
+        bracketViewController = UINavigationController(rootViewController: bracketViewController)
+        self.slideMenuController()?.changeMainViewController(bracketViewController, close: true)
     }
     
 

@@ -19,11 +19,28 @@ class BracketViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        let addParticipantButton = UIBarButtonItem(title: "Add Players", style: UIBarButtonItemStyle.Plain, target: self, action: "addParticipantButton")
+        navigationItem.rightBarButtonItem = addParticipantButton
+        navigationItem.title = "Your Brackets"
+        if (currentBracket == nil){
+            navigationItem.title = "No Bracket Selected"
+        }
+        else
+        {
+            navigationItem.title = currentBracket?.name
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addParticipantButton(){
+        var participantViewController: UIViewController!
+        participantViewController = storyboard!.instantiateViewControllerWithIdentifier("ParticipantViewController") as! ParticipantViewController
+        participantViewController = UINavigationController(rootViewController: participantViewController)
+        self.slideMenuController()?.changeMainViewController(participantViewController, close: true)
     }
     
 

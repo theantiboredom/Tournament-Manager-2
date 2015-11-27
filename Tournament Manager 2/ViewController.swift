@@ -11,17 +11,15 @@ import UIKit
 import CoreData
 
 var brackets = [NSManagedObject]()
+var currentBracket: Bracket? //the current bracket in use
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    let fetchRequest = NSFetchRequest(entityName: "Person")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,6 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             brackets = results as! [NSManagedObject]
+            print("Fetched\n")
         } catch let error as NSError {
             print ("Could not fetch \(error), \(error.userInfo)")
         }
@@ -52,9 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell =
-        tableView.dequeueReusableCellWithIdentifier("Cell")
-        
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var activeOrNot: String?
         if(brackets[indexPath.row].valueForKey("active") as? Bool == true){
             activeOrNot = "Active"
@@ -64,16 +61,32 @@ class ViewController: UIViewController, UITableViewDataSource {
             activeOrNot = "Inactive"
         }
         
-        let currentBracket = brackets[indexPath.row]
+        let selectedBracket = brackets[indexPath.row]
         
-        let bracketName = currentBracket.valueForKey("name") as? String
-        let bracketCreationDate = currentBracket.valueForKey("creationDate") as? String
+        let bracketName = selectedBracket.valueForKey("name") as? String
+        let bracketCreationDate = selectedBracket.valueForKey("creationDate") as? String
+        cell.textLabel!.text = bracketName! + " " + bracketCreationDate! + " " + activeOrNot!
         
-        cell!.textLabel!.text = bracketName! + " " + bracketCreationDate! + " " + activeOrNot!
-        
-        return cell!
+        return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedBracket = brackets[indexPath.row]
+        let bracketName = selectedBracket.valueForKey("name") as? String
+        let bracketParts = selectedBracket.valueForKey("numParts") as? Int
+        let bracketCreationDate = selectedBracket.valueForKey("creationDate") as? String
+        let bracketActive = selectedBracket.valueForKey("active") as? Bool
+        let bracketType = selectedBracket.valueForKey("bracketType") as? Int
+        let bracketElim = selectedBracket.valueForKey("singleElim") as? Bool
+        
+        currentBracket = Bracket(bracketName: bracketName!, elim: bracketElim!, numPart: bracketParts!, type: bracketType!, activeStatus: bracketActive!, crDate: bracketCreationDate!)
+        
+        var bracketViewController: UIViewController!
+        
+        bracketViewController = storyboard!.instantiateViewControllerWithIdentifier("BracketViewController") as! BracketViewController
+        bracketViewController = UINavigationController(rootViewController: bracketViewController)
+        self.slideMenuController()?.changeMainViewController(bracketViewController, close: true)
+    }
     
     
 }

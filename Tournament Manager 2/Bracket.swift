@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Bracket{
+class Bracket: NSManagedObject {
     var name: String?
     var singleElim: Bool?
     var numParticipants: Int? //number of participants 
@@ -17,7 +17,7 @@ class Bracket{
     var active: Bool? //active tournament? True = active
     var creationDate: String?
     
-    var competitors = [Participant]()
+    @NSManaged var competitors: NSSet
     
     //var matches = [Match]()
     //to be uncommented once we have Matches class 
@@ -47,6 +47,16 @@ class Bracket{
         }
         active = true
         
+    }
+    
+    //constructor for reconstructing the bracket from the core data values
+    init(bracketName: String, elim: Bool, numPart: Int, type: Int, activeStatus: Bool, crDate: String){
+        creationDate = crDate
+        active = activeStatus
+        bracketType = type
+        numParticipants = numPart
+        singleElim = elim
+        name = bracketName
     }
     
     
