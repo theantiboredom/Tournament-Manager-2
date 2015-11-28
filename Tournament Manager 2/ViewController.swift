@@ -10,8 +10,10 @@
 import UIKit
 import CoreData
 
-var brackets = [NSManagedObject]()
+//global variables
+var brackets = [Bracket]()
 var currentBracket: Bracket? //the current bracket in use
+var competitors = [Participant]() //current participants
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -30,7 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
-            brackets = results as! [NSManagedObject]
+            brackets = results as! [Bracket]
             print("Fetched\n")
         } catch let error as NSError {
             print ("Could not fetch \(error), \(error.userInfo)")
@@ -53,7 +55,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var activeOrNot: String?
-        if(brackets[indexPath.row].valueForKey("active") as? Bool == true){
+        if(brackets[indexPath.row].active == true){
             activeOrNot = "Active"
         }
         else
@@ -63,23 +65,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let selectedBracket = brackets[indexPath.row]
         
-        let bracketName = selectedBracket.valueForKey("name") as? String
-        let bracketCreationDate = selectedBracket.valueForKey("creationDate") as? String
+        let bracketName = selectedBracket.name
+        let bracketCreationDate = selectedBracket.creationDate
         cell.textLabel!.text = bracketName! + " " + bracketCreationDate! + " " + activeOrNot!
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedBracket = brackets[indexPath.row]
-        let bracketName = selectedBracket.valueForKey("name") as? String
-        let bracketParts = selectedBracket.valueForKey("numParts") as? Int
-        let bracketCreationDate = selectedBracket.valueForKey("creationDate") as? String
-        let bracketActive = selectedBracket.valueForKey("active") as? Bool
-        let bracketType = selectedBracket.valueForKey("bracketType") as? Int
-        let bracketElim = selectedBracket.valueForKey("singleElim") as? Bool
-        
-        currentBracket = Bracket(bracketName: bracketName!, elim: bracketElim!, numPart: bracketParts!, type: bracketType!, activeStatus: bracketActive!, crDate: bracketCreationDate!)
+        currentBracket = brackets[indexPath.row]
+        competitors = currentBracket!.players?.allObjects as! [Participant]
         
         var bracketViewController: UIViewController!
         

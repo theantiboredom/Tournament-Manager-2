@@ -31,8 +31,10 @@
 		2963CC171BEF9C4C0084AF47 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC121BEF9C4C0084AF47 /* StringExtension.swift */; };
 		2963CC181BEF9C4C0084AF47 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC131BEF9C4C0084AF47 /* UITableViewExtension.swift */; };
 		2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */; };
-		2963CC1B1BEFB0F20084AF47 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CC1A1BEFB0F20084AF47 /* Participant.swift */; };
-		298D2FBC1BF96C84003DBE63 /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298D2FBB1BF96C84003DBE63 /* Bracket.swift */; };
+		296693071C0A527C00F78EBD /* Bracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693031C0A527C00F78EBD /* Bracket.swift */; };
+		296693081C0A527C00F78EBD /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693041C0A527C00F78EBD /* Bracket+CoreDataProperties.swift */; };
+		296693091C0A527C00F78EBD /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693051C0A527C00F78EBD /* Participant.swift */; };
+		2966930A1C0A527C00F78EBD /* Participant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693061C0A527C00F78EBD /* Participant+CoreDataProperties.swift */; };
 		FA1789881BF94EDA0047901B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789871BF94EDA0047901B /* Match.swift */; };
 		FA17898A1BF968DB0047901B /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789891BF968DB0047901B /* Stations.swift */; };
 /* End PBXBuildFile section */
@@ -64,8 +66,10 @@
 		2963CC121BEF9C4C0084AF47 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2963CC131BEF9C4C0084AF47 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		2963CC1A1BEFB0F20084AF47 /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
-		298D2FBB1BF96C84003DBE63 /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
+		296693031C0A527C00F78EBD /* Bracket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bracket.swift; sourceTree = "<group>"; };
+		296693041C0A527C00F78EBD /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		296693051C0A527C00F78EBD /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
+		296693061C0A527C00F78EBD /* Participant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Participant+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA1789871BF94EDA0047901B /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		FA1789891BF968DB0047901B /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,9 +113,11 @@
 				2963CBDF1BEF94090084AF47 /* AppDelegate.swift */,
 				2963CC001BEF9B9A0084AF47 /* ViewController.swift */,
 				2963CC021BEF9C2E0084AF47 /* AddViewController.swift */,
-				2963CC1A1BEFB0F20084AF47 /* Participant.swift */,
-				298D2FBB1BF96C84003DBE63 /* Bracket.swift */,
 				2963CC041BEF9C380084AF47 /* BaseTableViewCell.swift */,
+				296693031C0A527C00F78EBD /* Bracket.swift */,
+				296693041C0A527C00F78EBD /* Bracket+CoreDataProperties.swift */,
+				296693051C0A527C00F78EBD /* Participant.swift */,
+				296693061C0A527C00F78EBD /* Participant+CoreDataProperties.swift */,
 				2963CC051BEF9C380084AF47 /* BracketViewController.swift */,
 				2963CC081BEF9C410084AF47 /* LeftViewController.swift */,
 				2963CC091BEF9C410084AF47 /* ParticipantViewController.swift */,
@@ -216,16 +222,18 @@
 				2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */,
 				2963CBE81BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld in Sources */,
 				2963CC0F1BEF9C410084AF47 /* SettingsViewController.swift in Sources */,
-				298D2FBC1BF96C84003DBE63 /* Bracket.swift in Sources */,
 				2963CC031BEF9C2E0084AF47 /* AddViewController.swift in Sources */,
 				2963CC061BEF9C380084AF47 /* BaseTableViewCell.swift in Sources */,
+				296693091C0A527C00F78EBD /* Participant.swift in Sources */,
 				2963CC151BEF9C4C0084AF47 /* SlideMenuController.swift in Sources */,
 				FA1789881BF94EDA0047901B /* Match.swift in Sources */,
+				2966930A1C0A527C00F78EBD /* Participant+CoreDataProperties.swift in Sources */,
 				2963CC161BEF9C4C0084AF47 /* StationsViewController.swift in Sources */,
+				296693071C0A527C00F78EBD /* Bracket.swift in Sources */,
 				2963CC0E1BEF9C410084AF47 /* ResultsViewController.swift in Sources */,
 				2963CBE01BEF94090084AF47 /* AppDelegate.swift in Sources */,
-				2963CC1B1BEFB0F20084AF47 /* Participant.swift in Sources */,
 				2963CC0C1BEF9C410084AF47 /* LeftViewController.swift in Sources */,
+				296693081C0A527C00F78EBD /* Bracket+CoreDataProperties.swift in Sources */,
 				FA17898A1BF968DB0047901B /* Stations.swift in Sources */,
 				2963CC171BEF9C4C0084AF47 /* StringExtension.swift in Sources */,
 				2963CC071BEF9C380084AF47 /* BracketViewController.swift in Sources */,

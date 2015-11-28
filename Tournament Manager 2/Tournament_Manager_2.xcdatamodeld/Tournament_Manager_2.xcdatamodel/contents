@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
-    <entity name="Bracket" syncable="YES">
+    <entity name="Bracket" representedClassName=".Bracket" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="bracketType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="creationDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numParts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="singleElim" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="started" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Participant" inverseName="parent_bracket" inverseEntity="Participant" syncable="YES"/>
     </entity>
     <entity name="Match" syncable="YES">
         <attribute name="player1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="player2" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Participant" syncable="YES">
+    <entity name="Participant" representedClassName=".Participant" syncable="YES">
         <attribute name="losses" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -22,9 +23,9 @@
     </entity>
     <entity name="Station" syncable="YES"/>
     <elements>
-        <element name="Bracket" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Bracket" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="Match" positionX="225" positionY="-18" width="128" height="75"/>
         <element name="Participant" positionX="115" positionY="-171" width="128" height="118"/>
-        <element name="Station" positionX="142" positionY="171" width="128" height="45"/>
+        <element name="Station" positionX="142" positionY="171" width="128" height="43"/>
     </elements>
 </model>

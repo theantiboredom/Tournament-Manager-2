@@ -11,9 +11,19 @@ import CoreData
 
 class ParticipantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    //Table views
     @IBOutlet weak var tableView1: UITableView!
     
-    @IBOutlet weak var tableView2: UITableView!
+    //Labels 
+    @IBOutlet weak var topLabel: UILabel!
+    
+    //TextFields
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var seedField: UITextField!
+    
+    
+    //selected participant index in this view
+    var selectedParticipant: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,37 +53,109 @@ class ParticipantViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableView1 {
-            return 5
-        }
-        else {
-            return 3
-        }
+        return competitors.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        
-        if tableView == tableView1
-        {
-            cell.textLabel!.text = "One"
-        }
-        else {
-            cell.textLabel!.text = "Two"
-        }
+        let competitorName = competitors[indexPath.row].name
+        let competitorSeed = competitors[indexPath.row].seed
+        cell.textLabel?.text = "\(competitorName!) Seed: \(competitorSeed!)"
         return cell
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView == tableView1{
-            return "All Participants"
+        return "Participants in Bracket: \(competitors.count) Max: \(Int((currentBracket?.numParts)!))"
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedParticipant = indexPath.row
+    }
+    
+    @IBAction func addNewButton(sender: AnyObject) {
+        if(nameField.text == "" || seedField.text == ""){
+            topLabel.text = "Name/Seed cannot be blank"
+        }
+        else if ((Int(seedField.text!)) != nil){
+            let chosenName = nameField.text
+            let chosenSeed = Int(seedField.text!)
+            
+            
+            if(chosenSeed! > Int(currentBracket!.numParts!)){
+                //case where the seed is higher than the number of participants
+                topLabel.text = "Seed cannot exceed # participants"
+            }
+            else if(seedExists(chosenSeed!) == true){
+                //case where the seed is doubled up
+                topLabel.text = "This seed already exists"
+            }
+            else if(chosenSeed! <= 0){
+                //case where the seed is 0 or lower 
+                topLabel.text = "Seed cannot be lower than 1"
+            }
+            else {
+                //success case
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let managedContext = appDelegate.managedObjectContext
+                
+                let entity = NSEntityDescription.entityForName("Participant", inManagedObjectContext: managedContext)
+                let newParticipant = Participant(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                newParticipant.name = chosenName
+                newParticipant.seed = chosenSeed
+                newParticipant.wins = 0
+                newParticipant.losses = 0
+                newParticipant.parent_bracket = currentBracket
+                
+                do {
+                    try managedContext.save()
+                    competitors.append(newParticipant)
+                    tableView1.reloadData()
+                } catch let error as NSError {
+                    print("Could not save \(error)")
+                }
+                nameField.text = ""
+                seedField.text = ""
+            }
+
+            
         }
         else {
-            return "Participants in This Bracket"
+            topLabel.text = "Seed must be a number"
         }
     }
     
-
+    
+    @IBAction func deleteButton(sender: AnyObject) {
+        if (selectedParticipant == nil){
+            topLabel.text = "Select player to delete"
+        }
+        else {
+            //player is selected, delete it 
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            managedContext.deleteObject(competitors[selectedParticipant!])
+            competitors.removeAtIndex(selectedParticipant!)
+            
+            do {
+                try managedContext.save()
+                tableView1.reloadData()
+            } catch let error as NSError {
+                print("Could not delete \(error)")
+            }
+        }
+    }
+    
+    
+    
+    //makes sure that seeds do not double up
+    func seedExists(checkSeed: Int) -> Bool {
+        for player in competitors {
+            if player.seed == checkSeed {
+                return true
+            }
+        }
+        return false
+    }
     /*
     // MARK: - Navigation
 
