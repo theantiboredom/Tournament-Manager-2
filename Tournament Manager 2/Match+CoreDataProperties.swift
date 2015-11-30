@@ -22,6 +22,7 @@ extension Match {
     @NSManaged var next_loser: Match?
     @NSManaged var player1: Participant?
     @NSManaged var player2: Participant?
-    @NSManaged var parent_bracket: Bracket? 
+    @NSManaged var parent_bracket: Bracket?
+    @NSManaged var hasBye: NSNumber?
 
 }

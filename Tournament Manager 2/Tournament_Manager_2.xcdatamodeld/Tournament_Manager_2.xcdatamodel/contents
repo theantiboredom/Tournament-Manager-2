@@ -13,6 +13,7 @@
         <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" syncable="YES"/>
     </entity>
     <entity name="Match" representedClassName=".Match" syncable="YES">
+        <attribute name="hasBye" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastMatch" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="score_player1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -39,7 +40,7 @@
     </entity>
     <elements>
         <element name="Bracket" positionX="-63" positionY="-18" width="128" height="195"/>
-        <element name="Match" positionX="225" positionY="-18" width="128" height="195"/>
+        <element name="Match" positionX="225" positionY="-18" width="128" height="210"/>
         <element name="Participant" positionX="115" positionY="-171" width="128" height="118"/>
         <element name="Station" positionX="142" positionY="171" width="128" height="105"/>
     </elements>
