@@ -7,11 +7,19 @@
 //
 
 import Foundation
+import CoreData
 
 //class for a match data type that will be used in a bracket tree
 
-class Match {
+class Match: NSManagedObject {
+    
+    
+    
+    
+    
     //variables in a Match include its two players, a winner, a loser and the scores
+    
+    /*
     var _PlayerOne = Participant()
     
     var PlayerOne: Participant {
@@ -94,6 +102,7 @@ class Match {
         _POScore = 0
         _PTScore = 0
     }
+*/
     
     
 }

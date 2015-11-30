@@ -35,8 +35,10 @@
 		296693081C0A527C00F78EBD /* Bracket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693041C0A527C00F78EBD /* Bracket+CoreDataProperties.swift */; };
 		296693091C0A527C00F78EBD /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693051C0A527C00F78EBD /* Participant.swift */; };
 		2966930A1C0A527C00F78EBD /* Participant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296693061C0A527C00F78EBD /* Participant+CoreDataProperties.swift */; };
+		2966930C1C0BC4DC00F78EBD /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966930B1C0BC4DC00F78EBD /* Match+CoreDataProperties.swift */; };
+		2966930F1C0BD09200F78EBD /* Station+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966930D1C0BD09200F78EBD /* Station+CoreDataProperties.swift */; };
+		296693101C0BD09200F78EBD /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2966930E1C0BD09200F78EBD /* Station.swift */; };
 		FA1789881BF94EDA0047901B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789871BF94EDA0047901B /* Match.swift */; };
-		FA17898A1BF968DB0047901B /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1789891BF968DB0047901B /* Stations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,8 +72,10 @@
 		296693041C0A527C00F78EBD /* Bracket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bracket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		296693051C0A527C00F78EBD /* Participant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		296693061C0A527C00F78EBD /* Participant+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Participant+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2966930B1C0BC4DC00F78EBD /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2966930D1C0BD09200F78EBD /* Station+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2966930E1C0BD09200F78EBD /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		FA1789871BF94EDA0047901B /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
-		FA1789891BF968DB0047901B /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,9 @@
 		2963CBDE1BEF94090084AF47 /* Tournament Manager 2 */ = {
 			isa = PBXGroup;
 			children = (
+				2966930D1C0BD09200F78EBD /* Station+CoreDataProperties.swift */,
+				2966930E1C0BD09200F78EBD /* Station.swift */,
+				2966930B1C0BC4DC00F78EBD /* Match+CoreDataProperties.swift */,
 				2963CBDF1BEF94090084AF47 /* AppDelegate.swift */,
 				2963CC001BEF9B9A0084AF47 /* ViewController.swift */,
 				2963CC021BEF9C2E0084AF47 /* AddViewController.swift */,
@@ -134,7 +141,6 @@
 				2963CBEE1BEF940A0084AF47 /* Info.plist */,
 				2963CBE61BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld */,
 				FA1789871BF94EDA0047901B /* Match.swift */,
-				FA1789891BF968DB0047901B /* Stations.swift */,
 			);
 			path = "Tournament Manager 2";
 			sourceTree = "<group>";
@@ -227,14 +233,16 @@
 				296693091C0A527C00F78EBD /* Participant.swift in Sources */,
 				2963CC151BEF9C4C0084AF47 /* SlideMenuController.swift in Sources */,
 				FA1789881BF94EDA0047901B /* Match.swift in Sources */,
+				296693101C0BD09200F78EBD /* Station.swift in Sources */,
 				2966930A1C0A527C00F78EBD /* Participant+CoreDataProperties.swift in Sources */,
 				2963CC161BEF9C4C0084AF47 /* StationsViewController.swift in Sources */,
 				296693071C0A527C00F78EBD /* Bracket.swift in Sources */,
+				2966930F1C0BD09200F78EBD /* Station+CoreDataProperties.swift in Sources */,
+				2966930C1C0BC4DC00F78EBD /* Match+CoreDataProperties.swift in Sources */,
 				2963CC0E1BEF9C410084AF47 /* ResultsViewController.swift in Sources */,
 				2963CBE01BEF94090084AF47 /* AppDelegate.swift in Sources */,
 				2963CC0C1BEF9C410084AF47 /* LeftViewController.swift in Sources */,
 				296693081C0A527C00F78EBD /* Bracket+CoreDataProperties.swift in Sources */,
-				FA17898A1BF968DB0047901B /* Stations.swift in Sources */,
 				2963CC171BEF9C4C0084AF47 /* StringExtension.swift in Sources */,
 				2963CC071BEF9C380084AF47 /* BracketViewController.swift in Sources */,
 				2963CC181BEF9C4C0084AF47 /* UITableViewExtension.swift in Sources */,
@@ -349,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tournament Manager 2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ishiniwasaki.Tournament-Manager-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,6 +369,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Tournament Manager 2/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ishiniwasaki.Tournament-Manager-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

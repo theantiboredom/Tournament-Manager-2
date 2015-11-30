@@ -279,14 +279,23 @@
                                     <action selector="createButton:" destination="I94-F6-oZ2" eventType="touchUpInside" id="XjE-Ga-CDG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDx-MI-7jV">
+                                <rect key="frame" x="145" y="352" width="84" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="vYg-OF-Gsb" firstAttribute="top" secondItem="SSk-He-T8J" secondAttribute="bottom" constant="51" id="1i8-L1-qQk"/>
+                            <constraint firstItem="PDx-MI-7jV" firstAttribute="top" secondItem="70M-DE-20V" secondAttribute="bottom" constant="46" id="FCT-Kc-56v"/>
                             <constraint firstItem="IYy-US-tda" firstAttribute="top" secondItem="eC1-fF-7L5" secondAttribute="bottom" constant="23" id="GEw-kL-vTw"/>
                             <constraint firstItem="jdQ-A0-gk8" firstAttribute="leading" secondItem="yCZ-vD-7x1" secondAttribute="leadingMargin" id="Mzn-Kn-Exy"/>
+                            <constraint firstItem="PDx-MI-7jV" firstAttribute="centerX" secondItem="yCZ-vD-7x1" secondAttribute="centerX" id="N8V-sv-QMa"/>
                             <constraint firstItem="vYg-OF-Gsb" firstAttribute="leading" secondItem="jdQ-A0-gk8" secondAttribute="trailing" constant="47" id="R1Z-bq-53a"/>
                             <constraint firstItem="IYy-US-tda" firstAttribute="leading" secondItem="yCZ-vD-7x1" secondAttribute="leadingMargin" id="T8y-0j-rcG"/>
                             <constraint firstItem="vYg-OF-Gsb" firstAttribute="trailing" secondItem="yCZ-vD-7x1" secondAttribute="trailingMargin" id="dvj-Wz-v4H"/>
@@ -307,6 +316,7 @@
                     <connections>
                         <outlet property="bracketName" destination="ovU-BZ-gdB" id="L8R-uD-RJI"/>
                         <outlet property="elimType" destination="vYg-OF-Gsb" id="bVL-BG-8Mb"/>
+                        <outlet property="errorLabel" destination="PDx-MI-7jV" id="27h-IX-Bvk"/>
                         <outlet property="numParticipants" destination="SSk-He-T8J" id="uId-Vx-w0b"/>
                         <segue destination="Pux-Iu-tfy" kind="show" identifier="backToHome" id="Lxt-4i-yP9"/>
                     </connections>
