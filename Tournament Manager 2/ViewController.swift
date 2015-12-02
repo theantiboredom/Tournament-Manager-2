@@ -15,6 +15,8 @@ var brackets = [Bracket]()
 var currentBracket: Bracket? //the current bracket in use
 var competitors = [Participant]() //current participants
 var stations = [Station]() //current stations
+var matches = [Match]()
+
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -76,6 +78,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentBracket = brackets[indexPath.row]
         competitors = currentBracket!.players?.allObjects as! [Participant]
+        matches = currentBracket!.players?.allObjects as! [Match]
         
         var bracketViewController: UIViewController!
         

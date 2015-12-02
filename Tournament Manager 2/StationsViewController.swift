@@ -77,7 +77,7 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
             let newStation = Station(entity: entity!, insertIntoManagedObjectContext: managedContext)
             newStation.name = finalName
             newStation.filled = 0
-            newStation.time = defaultTimer
+            //newStation.time = defaultTimer
             newStation.current_match = nil
             newStation.associated_bracket = currentBracket
             
