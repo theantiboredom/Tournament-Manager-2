@@ -18,11 +18,11 @@ extension Match {
     @NSManaged var score_player2: NSNumber?
     @NSManaged var lastMatch: NSNumber?
     @NSManaged var inProgress: NSNumber?
-    @NSManaged var next_winner: NSNumber?
-    @NSManaged var next_loser: NSNumber?
+    @NSManaged var next_winner: Match?
+    @NSManaged var next_loser: Match?
     @NSManaged var player1: Participant?
     @NSManaged var player2: Participant?
     @NSManaged var parent_bracket: Bracket?
     @NSManaged var hasBye: NSNumber?
-    @NSManaged var matchNumber: NSNumber?
+    @NSManaged var matchNumber: NSNumber? //the number for the match
 }

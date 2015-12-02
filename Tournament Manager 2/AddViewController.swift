@@ -106,6 +106,18 @@ class AddViewController: UIViewController {
             currentBracket?.generateMatches()
             competitors = currentBracket!.players?.allObjects as! [Participant]
             matches = currentBracket!.matches?.allObjects as! [Match]
+            matches.sortInPlace{Int($0.matchNumber!) < Int($1.matchNumber!)}
+            
+            for eachMatch in matches{
+                eachMatch.assignWinner()
+                eachMatch.assignLoser()
+            }
+            do {
+                try managedContext.save()
+                print("Saved")
+            } catch let error as NSError {
+                print("Could not save \(error)")
+            }
             
             var bracketViewController: UIViewController!
             

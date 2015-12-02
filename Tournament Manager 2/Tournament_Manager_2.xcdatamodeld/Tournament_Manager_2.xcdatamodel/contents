@@ -18,11 +18,11 @@
         <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastMatch" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="matchNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_loser" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_winner" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="score_player1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="score_player2" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="current_station" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Station" inverseName="current_match" inverseEntity="Station" syncable="YES"/>
+        <relationship name="next_loser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" syncable="YES"/>
+        <relationship name="next_winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" syncable="YES"/>
         <relationship name="parent_bracket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bracket" inverseName="matches" inverseEntity="Bracket" syncable="YES"/>
         <relationship name="player1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" syncable="YES"/>
         <relationship name="player2" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" syncable="YES"/>

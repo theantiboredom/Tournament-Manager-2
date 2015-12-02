@@ -37,6 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             brackets = results as! [Bracket]
+            brackets.sortInPlace{$0.name!.lowercaseString < $1.name!.lowercaseString}
             print("Fetched\n")
         } catch let error as NSError {
             print ("Could not fetch \(error), \(error.userInfo)")
@@ -70,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             activeOrNot = "Finished"
         }
         
+        brackets.sortInPlace{$0.name!.lowercaseString < $1.name!.lowercaseString}
         let selectedBracket = brackets[indexPath.row]
         
         let bracketName = selectedBracket.name
@@ -83,6 +85,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         currentBracket = brackets[indexPath.row]
         competitors = currentBracket!.players?.allObjects as! [Participant]
         matches = currentBracket!.matches?.allObjects as! [Match]
+        competitors.sortInPlace{Int($0.seed!) < Int($1.seed!)}
+        matches.sortInPlace{Int($0.matchNumber!) < Int($1.matchNumber!)}
         
         var bracketViewController: UIViewController!
         
