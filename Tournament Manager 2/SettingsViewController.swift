@@ -12,9 +12,34 @@ import CoreData
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var UpdateLabel: UILabel!
+    
+    //Update Timer Button
+    @IBAction func UpdateTimer(sender: UIButton) {
+        if (DefTimer.text == ""){
+            UpdateLabel.text = "Please input a number in seconds to update the default timer"
+        }
+        else {
+            defaultTimer = Int(DefTimer.text!)
+            UpdateLabel.text = "Timer Updated!"
+        }
+    }
+    
+    @IBOutlet weak var AscendOrDescend: UISegmentedControl!
+    
+    
+    @IBOutlet weak var SortingMethod: UISegmentedControl!
+    
+    @IBAction func BracketSort(sender: AnyObject) {
+        
+    }
+    
+    //Textfields
+    @IBOutlet weak var DefTimer: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UpdateLabel.text = ""
         // Do any additional setup after loading the view.
     }
     
@@ -29,6 +54,7 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Delete All Brackets Button
     @IBAction func deleteAllBrackets(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext

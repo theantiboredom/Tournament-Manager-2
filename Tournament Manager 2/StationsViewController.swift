@@ -38,8 +38,16 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         let stationName = stations[indexPath.row].name
-        cell.textLabel?.text = "\(stationName!)"
-        return cell
+        if (stations[indexPath.row].filled == false){
+            cell.textLabel?.text = "\(stationName!) - Station is Open."
+            return cell
+        }
+        
+        else{
+            cell.textLabel?.text = "\(stationName!) - Station is in use."
+            return cell
+        }
+        
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -54,6 +62,18 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
+        navigationItem.title = "Add Stations"
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "backButton")
+        navigationItem.leftBarButtonItem = backButton
+        BottomLabel.text = ""
+    }
+    
+    func backButton(){
+        var bracketViewController: UIViewController!
+        
+        bracketViewController = storyboard!.instantiateViewControllerWithIdentifier("BracketViewController") as! BracketViewController
+        bracketViewController = UINavigationController(rootViewController: bracketViewController)
+        self.slideMenuController()?.changeMainViewController(bracketViewController, close: true)
     }
 
     override func didReceiveMemoryWarning() {
