@@ -59,12 +59,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var activeOrNot: String?
-        if(brackets[indexPath.row].active == true){
+        if(brackets[indexPath.row].active == 0){
+            activeOrNot = "Not Started"
+        }
+        else if (brackets[indexPath.row].active == 1)
+        {
             activeOrNot = "Active"
         }
-        else
-        {
-            activeOrNot = "Inactive"
+        else {
+            activeOrNot = "Finished"
         }
         
         let selectedBracket = brackets[indexPath.row]
@@ -79,7 +82,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentBracket = brackets[indexPath.row]
         competitors = currentBracket!.players?.allObjects as! [Participant]
-        matches = currentBracket!.players?.allObjects as! [Match]
+        matches = currentBracket!.matches?.allObjects as! [Match]
         
         var bracketViewController: UIViewController!
         

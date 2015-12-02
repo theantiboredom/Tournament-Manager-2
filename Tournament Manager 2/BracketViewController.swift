@@ -30,7 +30,9 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print (matches.count)
+        assignInitialByes()
         findNonByes()
+        print (nonByeMatches.count)
         tableView.reloadData()
         errorLabel.text = ""
         self.setNavigationBarItem()
@@ -157,14 +159,35 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         else {
             let thisMatch = nonByeMatches[indexPath.row]
-            let p1name = thisMatch.player1!.name!
-            let p2name = thisMatch.player2!.name!
-            let p1seed = thisMatch.player1!.seed!
-            let p2seed = thisMatch.player2!.seed!
-            
-            cell.textLabel!.text = "\(p1seed): \(p1name) vs \(p2seed): \(p2name)"
+            var p1name: String?
+            var p2name: String?
+            var p1seed: Int?
+            var p2seed: Int?
+            if thisMatch.hasBye == 1{
+                p1name = "TBD"
+                p2name = thisMatch.player2!.name!
+                p2seed = Int(thisMatch.player2!.seed!)
+                cell.textLabel!.text = "\(p1name!) vs \(p2seed!): \(p2name!)"
+            }
+            else if thisMatch.hasBye == 2{
+                p2name = "TBD"
+                p1name = thisMatch.player1!.name!
+                p1seed = Int(thisMatch.player1!.seed!)
+                cell.textLabel!.text = "\(p1seed!): \(p1name!) vs \(p2name!)"
+            }
+            else if thisMatch.hasBye == 0{
+                p1name = thisMatch.player1!.name!
+                p2name = thisMatch.player2!.name!
+                p1seed = Int(thisMatch.player1!.seed!)
+                p2seed = Int(thisMatch.player2!.seed!)
+                cell.textLabel!.text = "\(p1seed!): \(p1name!) vs \(p2seed!): \(p2name!)"
+            }
+            else{
+                cell.textLabel!.text = "Error"
+            }
         }
         return cell
+
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -344,8 +367,8 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func findNonByes(){
-        for eachMatch in matches{
-            if eachMatch.player1 == nil || eachMatch.player2 == nil {
+        for eachMatch in matches {
+            if eachMatch.hasBye==3{
                 // do not add to the non-bye list
             }
             else {
@@ -353,6 +376,47 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+    
+    //set up the Byes for the first round of 64
+    func assignInitialByes(){
+        for index in 0...31 {
+            if matches[index].player1 == nil && matches[index].player2 == nil{
+                //both are BYES
+                matches[index].hasBye = 3
+            }
+            else if matches[index].player1 == nil && matches[index].player2 != nil {
+                //Player 1 is a BYE
+                matches[index].hasBye = 1
+            }
+            else if matches[index].player2 == nil && matches[index].player1 != nil{
+                //Player 2 is a BYE
+                matches[index].hasBye = 2
+            }
+            else {
+                //No byes
+                matches[index].hasBye = 0
+            }
+        }
+    }
+    
+    //resolve the matches that have Byes in them
+    func resolveByesSingle() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext
+        
+        for index in 0...62{
+            
+        }
+        
+        
+        do {
+            try managedContext.save()
+            startBut.setTitle("Stations List", forState: .Normal)
+        } catch let error as NSError {
+            print("Could not save \(error)")
+        }
+    }
+
     
     
     /*

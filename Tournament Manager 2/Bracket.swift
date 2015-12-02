@@ -31,6 +31,14 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
+                createdMatch.hasBye = 3 //assume all are byes at this point
+                
+                if (index < 62){
+                    let div = index/2
+                    createdMatch.next_winner = div + 32
+                }
+                createdMatch.next_loser = nil
+                
                 if index == 62 {
                     createdMatch.lastMatch = true
                 }
@@ -57,6 +65,14 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
+                createdMatch.hasBye = 3
+                
+                if (index < 62){
+                    let div = index/2
+                    createdMatch.next_winner = div + 32
+                    
+                }
+                
                 if index == 94 {
                     createdMatch.lastMatch = true
                 }

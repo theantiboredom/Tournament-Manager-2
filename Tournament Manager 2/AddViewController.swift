@@ -106,12 +106,14 @@ class AddViewController: UIViewController {
             currentBracket?.generateMatches()
             competitors = currentBracket!.players?.allObjects as! [Participant]
             matches = currentBracket!.matches?.allObjects as! [Match]
+            
             var bracketViewController: UIViewController!
             
             bracketViewController = storyboard!.instantiateViewControllerWithIdentifier("BracketViewController") as! BracketViewController
             bracketViewController = UINavigationController(rootViewController: bracketViewController)
             self.slideMenuController()?.changeMainViewController(bracketViewController, close: true)
         }
+
     }
     
     

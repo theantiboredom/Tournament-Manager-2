@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		292FC1321C0F457F00BA7B2B /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292FC1311C0F457F00BA7B2B /* MatchViewController.swift */; };
 		2963CBE01BEF94090084AF47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2963CBDF1BEF94090084AF47 /* AppDelegate.swift */; };
 		2963CBE51BEF940A0084AF47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2963CBE31BEF940A0084AF47 /* Main.storyboard */; };
 		2963CBE81BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2963CBE61BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodeld */; };
@@ -42,9 +43,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		292FC1311C0F457F00BA7B2B /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		2963CBDC1BEF94090084AF47 /* Tournament Manager 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tournament Manager 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2963CBDF1BEF94090084AF47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2963CBE41BEF940A0084AF47 /* Base */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2963CBE41BEF940A0084AF47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2963CBE71BEF940A0084AF47 /* Tournament_Manager_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tournament_Manager_2.xcdatamodel; sourceTree = "<group>"; };
 		2963CBE91BEF940A0084AF47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2963CBEC1BEF940A0084AF47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				2963CC131BEF9C4C0084AF47 /* UITableViewExtension.swift */,
 				2963CC141BEF9C4C0084AF47 /* UIViewControllerExtension.swift */,
 				2963CBE31BEF940A0084AF47 /* Main.storyboard */,
+				292FC1311C0F457F00BA7B2B /* MatchViewController.swift */,
 				2963CBE91BEF940A0084AF47 /* Assets.xcassets */,
 				2963CBEB1BEF940A0084AF47 /* LaunchScreen.storyboard */,
 				2963CBEE1BEF940A0084AF47 /* Info.plist */,
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292FC1321C0F457F00BA7B2B /* MatchViewController.swift in Sources */,
 				2963CC0D1BEF9C410084AF47 /* ParticipantViewController.swift in Sources */,
 				2963CC011BEF9B9A0084AF47 /* ViewController.swift in Sources */,
 				2963CC191BEF9C4C0084AF47 /* UIViewControllerExtension.swift in Sources */,
