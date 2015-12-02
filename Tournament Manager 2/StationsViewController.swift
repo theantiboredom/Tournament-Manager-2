@@ -22,6 +22,7 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
     
     //Textfield
     @IBOutlet weak var StationName: UITextField!
+    @IBOutlet weak var TimerLength: UITextField!
     
     //selected index of a station from the table
     var selectedStation: Int?
@@ -70,19 +71,58 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
         else{
             let finalName = StationName.text
             
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let managedContext = appDelegate.managedObjectContext
+            if(TimerLength.text == "") {
+                let finalTimer = defaultTimer
+                
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let managedContext = appDelegate.managedObjectContext
+                
+                let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
+                let newStation = Station(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                newStation.name = finalName
+                newStation.filled = 0
+                newStation.time = finalTimer
+                newStation.current_match = nil
+                newStation.associated_bracket = currentBracket
+                
+                do {
+                    try managedContext.save()
+                    stations.append(newStation)
+                    StationsTable.reloadData()
+                } catch let error as NSError {
+                    print ("Could not save \(error)")
+                }
+                
+                
+                BottomLabel.text = "Addition Successful"
+                StationName.text = ""
+            }
             
-            let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
-            let newStation = Station(entity: entity!, insertIntoManagedObjectContext: managedContext)
-            newStation.name = finalName
-            newStation.filled = 0
-            //newStation.time = defaultTimer
-            newStation.current_match = nil
-            newStation.associated_bracket = currentBracket
-            
-            
-            StationName.text = ""
+            else {
+                let finalTimer = Int(TimerLength.text!)
+                
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let managedContext = appDelegate.managedObjectContext
+                
+                let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
+                let newStation = Station(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                newStation.name = finalName
+                newStation.filled = 0
+                newStation.time = finalTimer
+                newStation.current_match = nil
+                newStation.associated_bracket = currentBracket
+                
+                do {
+                    try managedContext.save()
+                    stations.append(newStation)
+                    StationsTable.reloadData()
+                } catch let error as NSError {
+                    print ("Could not save \(error)")
+                }
+                
+                BottomLabel.text = "Addition Successful"
+                StationName.text = ""
+            }
             
         }
     }

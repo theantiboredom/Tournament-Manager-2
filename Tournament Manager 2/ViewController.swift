@@ -16,6 +16,7 @@ var currentBracket: Bracket? //the current bracket in use
 var competitors = [Participant]() //current participants
 var stations = [Station]() //current stations
 var matches = [Match]()
+var defaultTimer = Int?()
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
