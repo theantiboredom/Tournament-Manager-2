@@ -7,26 +7,106 @@
 //
 
 import UIKit
+import CoreData
 
-class StationsViewController: UIViewController {
+
+
+class StationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    //Table
+    @IBOutlet weak var StationsTable: UITableView!
+    
+    //Label
+    @IBOutlet weak var BottomLabel: UILabel!
+    
+    
+    //Textfield
+    @IBOutlet weak var StationName: UITextField!
+    
+    //selected index of a station from the table
+    var selectedStation: Int?
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    } //one section
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stations.count
+    } //rows however long the stations array is
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let stationName = stations[indexPath.row].name
+        cell.textLabel?.text = "\(stationName!)"
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Number of Stations: \(stations.count)"
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedStation = indexPath.row
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarItem()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        super.didReceiveMemoryWarning()    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
     }
 
+    @IBAction func AddStation(sender: UIButton) {
+        if(StationName == ""){
+            BottomLabel.text = "Please input a name for the Station"
+        }
+        else{
+            let finalName = StationName.text
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            
+            let entity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedContext)
+            let newStation = Station(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            newStation.name = finalName
+            newStation.filled = 0
+            newStation.time = defaultTimer
+            newStation.current_match = nil
+            newStation.associated_bracket = currentBracket
+            
+            
+            StationName.text = ""
+            
+        }
+    }
+    
+    @IBAction func DeleteSelectedStation(sender: UIButton) {
+        if (selectedStation == nil ) {
+            BottomLabel.text = "Select Station to delete"
+        }
+        else {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            let managedContext = appDelegate.managedObjectContext
+            managedContext.deleteObject(stations[selectedStation!])
+            stations.removeAtIndex(selectedStation!)
+            BottomLabel.text = "Station successfully deleted"
+            do {
+                try managedContext.save()
+                StationsTable.reloadData()
+            } catch let error as NSError {
+                print("Could not delete \(error)")
+            }
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 

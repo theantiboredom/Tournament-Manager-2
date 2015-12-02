@@ -18,5 +18,6 @@ extension Station {
     @NSManaged var filled: NSNumber?
     @NSManaged var time: NSNumber?
     @NSManaged var current_match: Match?
+    @NSManaged var associated_bracket: Bracket?
 
 }

@@ -135,7 +135,6 @@ class ParticipantViewController: UIViewController, UITableViewDelegate, UITableV
             let managedContext = appDelegate.managedObjectContext
             managedContext.deleteObject(competitors[selectedParticipant!])
             competitors.removeAtIndex(selectedParticipant!)
-            
             do {
                 try managedContext.save()
                 tableView1.reloadData()

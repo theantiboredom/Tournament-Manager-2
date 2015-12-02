@@ -24,4 +24,5 @@ extension Bracket {
     @NSManaged var started: NSNumber? //started bracket or not, for editing participants
     @NSManaged var winner: Participant? 
     @NSManaged var matches: NSSet?
+    @NSManaged var stations: NSSet?
 }
