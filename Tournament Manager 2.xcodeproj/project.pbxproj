@@ -184,6 +184,11 @@
 					2963CBDB1BEF94090084AF47 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 78CTM2ZJ8F;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var UpdateLabel: UILabel!
     
     //Update Timer Button
+    
+    
     @IBAction func UpdateTimer(sender: UIButton) {
         if (DefTimer.text == ""){
             UpdateLabel.text = "Please input a number in seconds to update the default timer"
@@ -24,6 +26,7 @@ class SettingsViewController: UIViewController {
             UpdateLabel.text = "Timer Updated!"
         }
     }
+    
     
     @IBOutlet weak var AscendOrDescend: UISegmentedControl!
     

@@ -20,18 +20,29 @@ class AssignStationViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func ClearStation(sender: UIButton) {
         
-        stations[indexPath.row].current_match = Match?
+        //stations[indexPath.row].current_match = Match?
         
         
         //insert code for timer
     }
     
     @IBAction func AssignStation(sender: UIButton) {
-        stations[indexPath.row].current_match = globalMatch
+        //stations[indexPath.row].current_match = globalMatch
         
         //insert code for timer
         
+        // This function schedules the local notification to go off at a later point dependent on the timer
+        
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        notification.alertBody = "Swipe to make this go away"
+        notification.alertAction = "give up"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["CustomField1": "d00t"]
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
+    
+    
     
     
     
