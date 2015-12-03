@@ -17,6 +17,7 @@ var competitors = [Participant]() //current participants
 var stations = [Station]() //current stations
 var matches = [Match]()
 var defaultTimer = Int?()
+var globalMatch: Match? 
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -37,6 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             brackets = results as! [Bracket]
+            brackets.sortInPlace{$0.name!.lowercaseString < $1.name!.lowercaseString}
             print("Fetched\n")
         } catch let error as NSError {
             print ("Could not fetch \(error), \(error.userInfo)")
@@ -59,14 +61,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var activeOrNot: String?
-        if(brackets[indexPath.row].active == true){
+        if(brackets[indexPath.row].active == 0){
+            activeOrNot = "Not Started"
+        }
+        else if (brackets[indexPath.row].active == 1)
+        {
             activeOrNot = "Active"
         }
-        else
-        {
-            activeOrNot = "Inactive"
+        else {
+            activeOrNot = "Finished"
         }
         
+        brackets.sortInPlace{$0.name!.lowercaseString < $1.name!.lowercaseString}
         let selectedBracket = brackets[indexPath.row]
         
         let bracketName = selectedBracket.name
@@ -79,7 +85,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentBracket = brackets[indexPath.row]
         competitors = currentBracket!.players?.allObjects as! [Participant]
-        matches = currentBracket!.players?.allObjects as! [Match]
+        matches = currentBracket!.matches?.allObjects as! [Match]
+        competitors.sortInPlace{Int($0.seed!) < Int($1.seed!)}
+        matches.sortInPlace{Int($0.matchNumber!) < Int($1.matchNumber!)}
         
         var bracketViewController: UIViewController!
         

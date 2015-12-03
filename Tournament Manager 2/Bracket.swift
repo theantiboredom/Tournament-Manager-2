@@ -31,6 +31,11 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
+                createdMatch.hasBye = 0 //assume all are un-byed at this point
+                createdMatch.matchNumber = index
+                
+                createdMatch.next_loser = nil
+                
                 if index == 62 {
                     createdMatch.lastMatch = true
                 }
@@ -46,7 +51,7 @@ class Bracket: NSManagedObject {
         }
             //double elimination
         else {
-            for index in 0...94
+            for index in 0...126
             {
                 let entity = NSEntityDescription.entityForName("Match", inManagedObjectContext: managedContext)
                 let createdMatch = Match(entity: entity!, insertIntoManagedObjectContext: managedContext)
@@ -57,7 +62,10 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
-                if index == 94 {
+                createdMatch.hasBye = 0
+                createdMatch.matchNumber = index
+                
+                if index == 126 {
                     createdMatch.lastMatch = true
                 }
                 else{

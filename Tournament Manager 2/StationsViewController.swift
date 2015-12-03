@@ -37,14 +37,14 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        let stationName = stations[indexPath.row].name
+        let stationNameRow = stations[indexPath.row].name
         if (stations[indexPath.row].filled == false){
-            cell.textLabel?.text = "\(stationName!) - Station is Open."
+            cell.textLabel?.text = "\(stationNameRow!) - Station is Open."
             return cell
         }
         
         else{
-            cell.textLabel?.text = "\(stationName!) - Station is in use."
+            cell.textLabel?.text = "\(stationNameRow!) - Station is in use."
             return cell
         }
         
@@ -61,11 +61,7 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBarItem()
-        navigationItem.title = "Add Stations"
-        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "backButton")
-        navigationItem.leftBarButtonItem = backButton
-        BottomLabel.text = ""
+        
     }
     
     func backButton(){
@@ -82,6 +78,10 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
+        navigationItem.title = "Add Stations"
+        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "backButton")
+        navigationItem.leftBarButtonItem = backButton
+        BottomLabel.text = ""
     }
 
     @IBAction func AddStation(sender: UIButton) {
@@ -145,7 +145,7 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
         }
-    }
+    } //Adds a station to the table. If the TimerLength field is empty, it will use the DefaultTimer value that is set from the SettingsView
     
     @IBAction func DeleteSelectedStation(sender: UIButton) {
         if (selectedStation == nil ) {
@@ -165,7 +165,7 @@ class StationsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
-    }
+    } //Delete a station from the table based on what row of the table is selected
     
     /*
     // MARK: - Navigation

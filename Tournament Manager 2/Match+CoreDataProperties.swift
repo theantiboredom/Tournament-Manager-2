@@ -24,5 +24,6 @@ extension Match {
     @NSManaged var player2: Participant?
     @NSManaged var parent_bracket: Bracket?
     @NSManaged var hasBye: NSNumber?
-
+    // has bye: 0 means 
+    @NSManaged var matchNumber: NSNumber? //the number for the match
 }
