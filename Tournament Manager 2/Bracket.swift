@@ -31,7 +31,8 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
-                createdMatch.hasBye = 3 //assume all are byes at this point
+                createdMatch.hasBye = 0 //assume all are un-byed at this point
+                createdMatch.matchNumber = index
                 
                 createdMatch.next_loser = nil
                 
@@ -61,7 +62,7 @@ class Bracket: NSManagedObject {
                 createdMatch.inProgress = false
                 createdMatch.player1 = nil
                 createdMatch.player2 = nil
-                createdMatch.hasBye = 3
+                createdMatch.hasBye = 0
                 createdMatch.matchNumber = index
                 
                 if index == 126 {

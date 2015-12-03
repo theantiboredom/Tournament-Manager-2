@@ -11,8 +11,27 @@ import UIKit
 class BracketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //the matches that are not BYEs
-    var nonByeMatches = [Match]()
-    
+    //Arrays to hold each round's matches
+    var w1stRound = [Match]()
+    var w2ndRound = [Match]()
+    var w3rdRound = [Match]()
+    var wQuarterRound = [Match]()
+    var wSemiRound = [Match]()
+    var wFinalRound = [Match]()
+    var l1stRound = [Match]()
+    var l2ndRound = [Match]()
+    var l3rdRound = [Match]()
+    var l4thRound = [Match]()
+    var l5thRound = [Match]()
+    var l6thRound = [Match]()
+    var l7thRound = [Match]()
+    var lQuarterRound = [Match]()
+    var lSemiRound = [Match]()
+    var lFinalRound = [Match]()
+    var grandFinalsRound = [Match]()
+
+
+
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var startBut: UIButton!
@@ -31,9 +50,14 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         print (matches.count)
         assignInitialByes()
-        findNonByes()
-        print (nonByeMatches.count)
+        createRounds()
         tableView.reloadData()
+        print(matches[62].player1)
+        print(matches[16])
+        print(matches[24])
+        print(matches[58])
+        print(matches[59])
+        print(matches[61])
         errorLabel.text = ""
         self.setNavigationBarItem()
         navigationItem.title = "Your Brackets"
@@ -108,12 +132,22 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (nonByeMatches.count == 0){
+        if (competitors.count < 3){
             return 1
         }
-        else{
-            return nonByeMatches.count
+        if currentBracket?.bracketType == 0{
+            //4 Player SE 
+            if section == 0{
+                return wSemiRound.count
+            }
+            if section == 1{
+                return wFinalRound.count
+            }
         }
+        else{
+            return 3
+        }
+        return 1 
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -154,37 +188,24 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        if(nonByeMatches.count == 0){
-            cell.textLabel!.text = "Please add some players."
+        if(competitors.count < 3){
+            cell.textLabel!.text = "Please add at least 3 players."
+            return cell
         }
+        if currentBracket?.bracketType == 0{
+            //4-person SE 
+            if indexPath.section == 0{
+                let thisMatch = wSemiRound[indexPath.row]
+                cell.textLabel!.text = getCellText(thisMatch)
+            }
+            else if indexPath.section == 1 {
+                let thisMatch = wFinalRound[indexPath.row]
+                cell.textLabel!.text = getCellText(thisMatch)
+            }
+        }
+            
         else {
-            let thisMatch = nonByeMatches[indexPath.row]
-            var p1name: String?
-            var p2name: String?
-            var p1seed: Int?
-            var p2seed: Int?
-            if thisMatch.hasBye == 1{
-                p1name = "TBD"
-                p2name = thisMatch.player2!.name!
-                p2seed = Int(thisMatch.player2!.seed!)
-                cell.textLabel!.text = "\(p1name!) vs \(p2seed!): \(p2name!)"
-            }
-            else if thisMatch.hasBye == 2{
-                p2name = "TBD"
-                p1name = thisMatch.player1!.name!
-                p1seed = Int(thisMatch.player1!.seed!)
-                cell.textLabel!.text = "\(p1seed!): \(p1name!) vs \(p2name!)"
-            }
-            else if thisMatch.hasBye == 0{
-                p1name = thisMatch.player1!.name!
-                p2name = thisMatch.player2!.name!
-                p1seed = Int(thisMatch.player1!.seed!)
-                p2seed = Int(thisMatch.player2!.seed!)
-                cell.textLabel!.text = "\(p1seed!): \(p1name!) vs \(p2seed!): \(p2name!)"
-            }
-            else{
-                cell.textLabel!.text = "Error"
-            }
+                cell.textLabel!.text = "Test"
         }
         return cell
 
@@ -366,58 +387,118 @@ class BracketViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func findNonByes(){
-        for eachMatch in matches {
-            if eachMatch.hasBye==3{
-                // do not add to the non-bye list
-            }
-            else {
-                nonByeMatches.append(eachMatch)
-            }
-        }
-    }
-    
     //set up the Byes for the first round of 64
     func assignInitialByes(){
-        for index in 0...31 {
-            if matches[index].player1 == nil && matches[index].player2 == nil{
-                //both are BYES
-                matches[index].hasBye = 3
-            }
-            else if matches[index].player1 == nil && matches[index].player2 != nil {
-                //Player 1 is a BYE
-                matches[index].hasBye = 1
-            }
-            else if matches[index].player2 == nil && matches[index].player1 != nil{
-                //Player 2 is a BYE
-                matches[index].hasBye = 2
-            }
-            else {
-                //No byes
-                matches[index].hasBye = 0
-            }
-        }
-    }
-    
-    //resolve the matches that have Byes in them
-    func resolveByesSingle() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        
-        for index in 0...62{
-            
+        for eachMatch in matches{
+            eachMatch.hasBye = 0
         }
-        
-        
+        if currentBracket?.singleElim == true {
+            for range in 32...62 {
+                matches[range].player1 = nil
+                matches[range].player2 = nil
+            }
+        }
+        else{
+            for range in 32...126{
+                matches[range].player1 = nil
+                matches[range].player2 = nil
+            }
+        }
+        if currentBracket?.bracketType == 0 {
+            //4-person, single-elim: resolve up to winner's semis 
+            for index in 0...31{
+                if matches[index].player1 == nil && matches[index].player2 == nil{
+                    //both are BYES
+                    matches[index].hasBye = 3
+                }
+                else if matches[index].player1 == nil && matches[index].player2 != nil {
+                    //Player 1 is a BYE
+                    matches[index].hasBye = 1
+                }
+                else if matches[index].player2 == nil && matches[index].player1 != nil{
+                    //Player 2 is a BYE
+                    matches[index].hasBye = 2
+                }
+                else {
+                    //No byes
+                    matches[index].hasBye = 0
+                }
+            }
+            for index in 0...61 {
+                matches[index].advanceWinner()
+            }
+        }
         do {
             try managedContext.save()
-            startBut.setTitle("Stations List", forState: .Normal)
         } catch let error as NSError {
-            print("Could not save \(error)")
+            print("Could not save assign to winners \(error)")
+        }
+        
+    }
+    
+    func createRounds(){
+        if currentBracket?.bracketType == 0{
+            //4-person SE 
+            for index in 60...61{
+                if matches[index].hasBye == 0{
+                    wSemiRound.append(matches[index])
+                }
+                else{
+                    //do nothing
+                }
+            }
+            wFinalRound.append(matches[62])
         }
     }
 
-    
+    func getCellText(thisMatch: Match) -> String{
+        var p1name: String?
+        var p2name: String?
+        var p1seed: Int?
+        var p2seed: Int?
+        if thisMatch.hasBye == 1{
+            p1name = "TBD"
+            p2name = thisMatch.player2!.name!
+            p2seed = Int(thisMatch.player2!.seed!)
+            return "\(p1name!) vs \(p2seed!): \(p2name!)"
+        }
+        else if thisMatch.hasBye == 2{
+            p2name = "TBD"
+            p1name = thisMatch.player1!.name!
+            p1seed = Int(thisMatch.player1!.seed!)
+            return "\(p1seed!): \(p1name!) vs \(p2name!)"
+        }
+        else if thisMatch.hasBye == 0{
+            if thisMatch.player1 == nil && thisMatch.player2 == nil {
+                return "TBD vs TBD"
+            }
+            else if thisMatch.player1 != nil && thisMatch.player2 == nil{
+                p2name = "TBD"
+                p1name = thisMatch.player1!.name!
+                p1seed = Int(thisMatch.player1!.seed!)
+                return "\(p1seed!): \(p1name!) vs \(p2name!)"
+            }
+            else if thisMatch.player1 == nil && thisMatch.player2 != nil{
+                p1name = "TBD"
+                p2name = thisMatch.player2!.name!
+                p2seed = Int(thisMatch.player2!.seed!)
+                return "\(p1name!) vs \(p2seed!): \(p2name!)"
+            }
+            else{
+                p1name = thisMatch.player1!.name!
+                p1seed = Int(thisMatch.player1!.seed!)
+                p2name = thisMatch.player2!.name!
+                p2seed = Int(thisMatch.player2!.seed!)
+                return "\(p1seed!): \(p1name!) vs \(p2seed!): \(p2name!)"
+            }
+        }
+        else{
+            return "Error"
+        }
+
+    }
     
     /*
     // MARK: - Navigation

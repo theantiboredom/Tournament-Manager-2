@@ -14,7 +14,7 @@
         <relationship name="winner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Participant" syncable="YES"/>
     </entity>
     <entity name="Match" representedClassName=".Match" syncable="YES">
-        <attribute name="hasBye" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hasBye" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastMatch" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="matchNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

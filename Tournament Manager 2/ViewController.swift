@@ -17,6 +17,7 @@ var competitors = [Participant]() //current participants
 var stations = [Station]() //current stations
 var matches = [Match]()
 var defaultTimer = Int?()
+var globalMatch: Match? 
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {

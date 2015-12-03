@@ -132,5 +132,323 @@ class Match: NSManagedObject {
         }
     }
     
+    func advanceWinner(){
+        if (hasBye == 1){
+            //P1 is a BYE 
+            if Int(matchNumber!) < 63 {
+                if(Int(matchNumber!)%2 == 0){
+                    next_winner?.player1 = player2
+                    next_winner?.refreshByes()
+                    next_loser?.refreshByes()
+                }
+                else {
+                    next_winner?.player2 = player2
+                    next_winner?.refreshByes()
+                   /*
+                    if(next_loser?.hasBye == 0){
+                        next_loser?.hasBye = 2
+                    }
+                    else{
+                        next_loser?.hasBye = 3
+                    }
+                    */
+                    next_loser?.refreshByes()
+                }
+            }
+            else if (Int(matchNumber!) >= 63 && Int(matchNumber!) <= 78){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+            }
+            else if (Int(matchNumber!) >= 79 && Int(matchNumber!) <= 94){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player2
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player2
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 95 && Int(matchNumber!) <= 102){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 103 && Int(matchNumber!) <= 110){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player2
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player2
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 111 && Int(matchNumber!) <= 114){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 115 && Int(matchNumber!) <= 118) {
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player2
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player2
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 119 && Int(matchNumber!) <= 120){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 121){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 122){
+                next_winner?.player2 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 123){
+                next_winner?.player1 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 124){
+                next_winner?.player2 = player2
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 125){
+                next_winner?.player2 = player2
+                next_winner?.refreshByes()
+
+            }
+            else {
+                print("Error resolving bye 1")
+            }
+        }
+        else if (hasBye == 2){
+            //P2 is a BYE
+            if Int(matchNumber!) < 63 {
+                if(Int(matchNumber!)%2 == 0){
+                    next_winner?.player1 = player1
+                    next_winner?.refreshByes()
+                    next_loser?.refreshByes()
+                }
+                else {
+                    next_winner?.player2 = player1
+                    next_winner?.refreshByes()
+                    next_loser?.refreshByes()
+                }
+                
+            }
+            else if (Int(matchNumber!) >= 63 && Int(matchNumber!) <= 78){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+            }
+            else if (Int(matchNumber!) >= 79 && Int(matchNumber!) <= 94){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player1
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player1
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 95 && Int(matchNumber!) <= 102){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 103 && Int(matchNumber!) <= 110){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player1
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player1
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 111 && Int(matchNumber!) <= 114){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 115 && Int(matchNumber!) <= 118) {
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = player1
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = player1
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 119 && Int(matchNumber!) <= 120){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 121){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 122){
+                next_winner?.player2 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 123){
+                next_winner?.player1 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 124){
+                next_winner?.player2 = player1
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 125){
+                next_winner?.player2 = player1
+                next_winner?.refreshByes()
+
+            }
+            else {
+                print("Error resolving bye 1")
+            }
+        }
+        else if (hasBye == 3){
+            //Both are BYES - empty match
+            if Int(matchNumber!) < 63 {
+                if(Int(matchNumber!)%2 == 0){
+                    next_winner?.player1 = nil
+                    next_winner?.refreshByes()
+                }
+                else {
+                    next_winner?.player2 = nil
+                    next_winner?.refreshByes()
+                }
+            }
+            else if (Int(matchNumber!) >= 63 && Int(matchNumber!) <= 78){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+            }
+            else if (Int(matchNumber!) >= 79 && Int(matchNumber!) <= 94){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = nil
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = nil
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 95 && Int(matchNumber!) <= 102){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 103 && Int(matchNumber!) <= 110){
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = nil
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = nil
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 111 && Int(matchNumber!) <= 114){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) >= 115 && Int(matchNumber!) <= 118) {
+                if(Int(matchNumber!)%2 == 1) {
+                    next_winner?.player1 = nil
+                    next_winner?.refreshByes()
+
+                }
+                else{
+                    next_winner?.player2 = nil
+                    next_winner?.refreshByes()
+
+                }
+            }
+            else if (Int(matchNumber!) >= 119 && Int(matchNumber!) <= 120){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 121){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 122){
+                next_winner?.player2 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 123){
+                next_winner?.player1 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 124){
+                next_winner?.player2 = nil
+                next_winner?.refreshByes()
+
+            }
+            else if (Int(matchNumber!) == 125){
+                next_winner?.player2 = nil
+                next_winner?.refreshByes()
+
+            }
+            else {
+                print("Error resolving bye 1")
+            }
+        }
+    }
+    
+    func refreshByes(){
+        if player1 == nil && player2 == nil {
+            hasBye = 3
+        }
+        else if player1 != nil && player2 == nil{
+            hasBye = 2
+        }
+        else if player1 == nil && player2 != nil {
+            hasBye = 1
+        }
+        else {
+            hasBye = 0
+        }
+    }
     
 }

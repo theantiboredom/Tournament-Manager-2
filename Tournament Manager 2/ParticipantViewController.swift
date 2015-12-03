@@ -416,7 +416,10 @@ class ParticipantViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func assignType(){
-        if competitors.count <= 4{
+        if competitors.count < 3 {
+            currentBracket?.bracketType = nil
+        }
+        else if competitors.count >= 3 && competitors.count <= 4{
             if currentBracket?.singleElim == true {
                 currentBracket?.bracketType = 0
             }
