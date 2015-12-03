@@ -20,15 +20,19 @@ class AssignStationViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func ClearStation(sender: UIButton) {
         
+        stations[indexPath.row].current_match = Match?
         
         
+        //insert code for timer
     }
     
     @IBAction func AssignStation(sender: UIButton) {
+        stations[indexPath.row].current_match = globalMatch
         
-        
+        //insert code for timer
         
     }
+    
     
     
     
